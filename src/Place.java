@@ -12,6 +12,12 @@ public class Place {
 	private String name;
 	private String type;
 
+	public Place(int id, String type) {
+		this.id = id;
+		this.name = "";
+		this.type = type;
+	}
+	
 	public Place(int id, String name, String type) {
 		this.id = id;
 		this.name = name;
@@ -43,6 +49,6 @@ public class Place {
 	}
 
 	public String toString() {
-		return this.getName() + ", tipo="+this.getType();
+		return "V" + this.getId() + ", tipo="+this.getType();
 	}
 }

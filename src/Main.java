@@ -38,7 +38,7 @@ public class Main {
 			JSONObject properties = feature.getJSONObject("properties");
 
 			if (geometry.getString("type").equals("Point")) { // Place
-				Place p = new Place(properties.getInt("id"), properties.getString("name"), properties.getString("type"));
+				Place p = new Place(properties.getInt("id"), properties.getString("tipo"));
 				g.insertVertex(p);
 			}
 
@@ -51,13 +51,16 @@ public class Main {
 						coords2.getDouble(0), coords2.getDouble(1), "K") * 1000;
 				Place v1 = g.vertexValue(properties.getInt("v1"));
 				Place v2 = g.vertexValue(properties.getInt("v2"));
-				Road r = new Road(v1, v2, properties.getString("transport"), distance);
+				Road r = new Road(v1, v2, properties.getString("deslocamento"), distance);
 				g.insertEdge(r);
 			}
 
 		}
 		
+		
+		//System.out.println(Algorithms.Prim(g));
+		
 		System.out.println(g);	
-
+		
 	}
 }

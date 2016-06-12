@@ -52,7 +52,6 @@ public class Road {
 		this.distance = distance;
 	}
 
-	/* Retorna verdadeiro se v está na aresta, falso caso contrário */
 	public boolean hasVertex(Place v) {
 		if (v == getV1() || v == getV2())
 			return true;
@@ -62,4 +61,5 @@ public class Road {
 	public String toString() {
 		return v1 + ", " + v2 + ", " + "deslocamento=" + this.getDisplacement() + ", distance=" + this.getDistance();
 	}
+	
 }

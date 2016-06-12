@@ -27,22 +27,23 @@ public class Graph {
 	}
 
 	/* Retorna referências para os dois vértices finais da aresta e */
-	private Place[] endVertices(Road e) {
+	public Place[] endVertices(Road e) {
 		Place[] v = new Place[2];
 		v[0] = e.getV1();
 		v[1] = e.getV2();
 		return v;
 	}
+	 
 	
 	/* Retorna uma referência para o vértice oposto a v na aresta e */
-	private Place opposite(Place v, Road e) {
+	public Place opposite(Place v, Road e) {
 		if(v != e.getV1())
 			return e.getV1();
 		return e.getV2();
 	}
 	
 	/* Retorna verdadeiro se os vértices v e w forem adjacentes, falso caso contrário. */
-	private boolean areAdjacent(Place v, Place w) {
+	public boolean areAdjacent(Place v, Place w) {
 		for (Road edge : edges) {
 			if(edge.hasVertex(v) && edge.hasVertex(w)) 
 				return true;			
@@ -51,7 +52,7 @@ public class Graph {
 	}
 	
 	/* Substitui o elemento da aresta e por o */
-	private void replaceEdge(Road e, Road o) {
+	public void replaceEdge(Road e, Road o) {
 		e.setV1(o.getV1());
 		e.setV2(o.getV2());
 		e.setDisplacement(o.getDisplacement());
@@ -59,7 +60,7 @@ public class Graph {
 	}
 	
 	/* Substitui o elemento do vértice v por o */
-	private void replaceVertex(Place v, Place o) {
+	public void replaceVertex(Place v, Place o) {
 		v.setId(o.getId());
 		v.setName(o.getName());
 		v.setType(o.getType());
@@ -80,7 +81,7 @@ public class Graph {
 	}
 	
 	/* Remove o vértice v (e suas arestas) e retorna o elemento armazenado nele */
-	private Place removeVertex(Place v) {
+	public Place removeVertex(Place v) {
 		for (Road edge : edges) {
 			if(edge.hasVertex(v)) 
 				edges.remove(edge);
@@ -90,7 +91,7 @@ public class Graph {
 	}
 	
 	/* Remove a aresta e, retornando o elemento armazenado nela */
-	private Road removeEdge(Road e) {
+	public Road removeEdge(Road e) {
 		for (Road edge : edges) {
 			if(edge == e) 
 				edges.remove(edge);
@@ -99,7 +100,7 @@ public class Graph {
 	}
 	
 	/* Retorna o elemento armazenado na aresta e */
-	/*private <E> E edgeValue(Road e) {
+	/*public <E> E edgeValue(Road e) {
 		return (E) e.getData();
 	}*/
 	
@@ -111,6 +112,24 @@ public class Graph {
 		}
 		return null;
 	}	
+	
+	public ArrayList<Road> getVertexEdges(Place p) {
+		ArrayList<Road> edges = new ArrayList<Road>();
+		for (int i = 0; i < this.getEdges().size(); i++) {
+			if(this.getEdges().get(i).hasVertex(p))
+				edges.add(this.getEdges().get(i));
+		}
+		return edges;
+	}
+	
+	public boolean hasVertex(Place p){
+		for (Place place : vertices) {
+			if(place.getId() == p.getId()){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	public String toString() {
 		String s = "";
