@@ -56,11 +56,10 @@ public class Main {
 			}
 
 		}
-		
-		
-		//System.out.println(Algorithms.Prim(g));
-		
-		System.out.println(g);	
-		
+
+		// System.out.println(Algorithms.Prim(g));
+
+		System.out.println(g);
+
 	}
 }
