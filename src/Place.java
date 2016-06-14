@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //  Nós (Gabriela de Campos Trevisan, Paula Adriana Knob, Tais Felipe Rabello), garantimos que:
 //
 //  - Não utilizamos código fonte obtidos de outros estudantes,
@@ -11,17 +13,24 @@ public class Place {
 	private int id;
 	private String name;
 	private String type;
+	private ArrayList<Place> adjacents;
 
+	/** Local na Unisinos
+	 * @param id Id numérico
+	 * @param type Tipo (sala_de_aula, adm, banheiro, comida, farmacia, etc)
+	 */
 	public Place(int id, String type) {
 		this.id = id;
 		this.name = "";
 		this.type = type;
+		this.adjacents = new ArrayList<>();
 	}
 	
 	public Place(int id, String name, String type) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
+		this.adjacents = new ArrayList<>();
 	}
 	
 	public int getId() {
@@ -46,6 +55,15 @@ public class Place {
 	
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public ArrayList<Place> getAdjacents() {
+		return this.adjacents;
+	}
+	
+	public void insertAdjacent(Place p) {
+		if(!this.getAdjacents().contains(p))
+			this.adjacents.add(p);
 	}
 
 	public String toString() {
