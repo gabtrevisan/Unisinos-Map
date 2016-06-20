@@ -17,21 +17,21 @@ public class Main {
 		Graph g = map.getMap();
 		Graph mstPrim = map.getMstPrim();
 		Graph mstKruskal = map.getMstKruskal();
-
+		
 		System.out.println("Grafo preenchido:");
 		System.out.println(g);
-		//geoJson.toGeoJson(g);
+		// geoJson.toGeoJson(g);
 
 		System.out.println("Prim:\n");
 		System.out.println("MST: \n");
 		System.out.println(mstPrim);
-		//geoJson.toGeoJson(mstPrim);
+		// geoJson.toGeoJson(mstPrim);
 		System.out.println("Quantidade mínima de tinta: " + map.minToPaint(mstPrim) + " litros\n");
 
 		System.out.println("Kruskal:\n");
 		System.out.println("MST: \n");
 		System.out.println(mstKruskal);
-		//geoJson.toGeoJson(mstKruskal);
+		// geoJson.toGeoJson(mstKruskal);
 
 		System.out.println("Quantidade mínima de tinta: " + map.minToPaint(mstKruskal) + " litros\n");
 
@@ -58,10 +58,9 @@ public class Main {
 
 		System.out.println(map.minRoute(source, dest, "walk"));
 		System.out.println(map.minRoute(source, dest, "car"));
-		
-		
+
 		System.out.println("Locais próximos:");
-		
+
 		do {
 			System.out.printf("Informe o ID do local de origem: ");
 			try {
@@ -70,12 +69,12 @@ public class Main {
 				source = -1;
 			}
 		} while (g.vertexValue(source) == null);
-		
+
 		String type;
 		System.out.printf("Informe o tipo de local (comida, sala_de_aula, auditorio, ginasio, adm): ");
-		type = read.next();	
-		
-		int dist;		
+		type = read.next();
+
+		int dist;
 		do {
 			System.out.printf("Informe a distância máxima em metros que você quer percorrer: ");
 			try {
@@ -84,8 +83,9 @@ public class Main {
 				dist = -1;
 			}
 		} while (dist == -1);
-		
-		map.nearPlaces(source, type, dist);		
-		
+
+		map.nearPlaces(source, type, dist);	
+
+		map.distanciaCentros();
 	}
 }

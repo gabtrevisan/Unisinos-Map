@@ -15,10 +15,15 @@ public class Road {
 
 	/**
 	 * Caminho entre dois locais da Unisinos
-	 * @param v1 Vértice 1 (Local na Unisinos)
-	 * @param v2 Vértice 2 (Local na Unisinos)
-	 * @param displacement Tipo de descolamento entre V1 e V2 (car ou walk)
-	 * @param distance Distância em metros entre  V1 e V2
+	 * 
+	 * @param v1
+	 *            Vértice 1 (Local na Unisinos)
+	 * @param v2
+	 *            Vértice 2 (Local na Unisinos)
+	 * @param displacement
+	 *            Tipo de descolamento entre V1 e V2 (car ou walk)
+	 * @param distance
+	 *            Distância em metros entre V1 e V2
 	 */
 	public Road(Place v1, Place v2, String displacement, double distance) {
 		this.v1 = v1;
@@ -61,7 +66,9 @@ public class Road {
 
 	/**
 	 * Verifica se aresta possui o vértice
-	 * @param v Vértice
+	 * 
+	 * @param v
+	 *            Vértice
 	 * @return boolean
 	 */
 	public boolean hasVertex(Place v) {

@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
+//Nós (Gabriela de Campos Trevisan, Paula Adriana Knob, Tais Felipe Rabello), garantimos que:
+//
+//- Não utilizamos código fonte obtidos de outros estudantes,
+//ou fonte não autorizada, seja modificado ou cópia literal.
+//- Todo código usado em nosso trabalho é resultado do nosso
+//trabalho original, ou foi derivado de um
+//código publicado nos livros texto desta disciplina.
+//- Temos total ciência das consequências em caso de violarmos estes termos.
+
 public class Dijsktra {
 	private Graph graph;
 	private Place source;
@@ -186,5 +195,7 @@ public class Dijsktra {
 			cont++;
 		} while (cont < placesDistance.size());
 	}
+	
+	
 
 }

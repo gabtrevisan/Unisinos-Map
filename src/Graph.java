@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class Graph {
 	private ArrayList<Road> edges;
 	private ArrayList<Place> vertices;
+	private ArrayList<Place> adm;
 
 	public Graph() {
-		this.edges = new ArrayList<>();
-		this.vertices = new ArrayList<>();
+		this.edges = new ArrayList<Road>();
+		this.vertices = new ArrayList<Place>();
+		this.adm = new ArrayList<Place>();
 	}
 
 	public ArrayList<Road> getEdges() {
@@ -91,7 +93,7 @@ public class Graph {
 			v2 = o.getV2();
 		else
 			v2 = this.insertVertex(o.getV2());
-		
+
 		v1.insertAdjacent(v2);
 		v2.insertAdjacent(v1);
 
@@ -151,7 +153,7 @@ public class Graph {
 	/** Retorna o elemento armazenado na aresta e */
 	public Road edgeValue(Place v1, Place v2) {
 		for (Road road : this.getVertexEdges(v1)) {
-			if(this.opposite(v1, road).getId() == v2.getId())
+			if (this.opposite(v1, road).getId() == v2.getId())
 				return road;
 		}
 		return null;
@@ -209,6 +211,18 @@ public class Graph {
 			}
 		}
 		return false;
+	}
+	
+	public Place addAdm(Place p) {
+		if(p.getType().equals("adm")) {
+			adm.add(p);
+			return p;
+		}
+		return null;
+	}
+	
+	public ArrayList<Place> getAdm() {
+		return this.adm;
 	}
 
 	public String toString() {

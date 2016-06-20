@@ -74,10 +74,10 @@ public class UnisinosMap {
 			s += "Distância em metros: " + d.minDistance() + "\n";
 			s += "Tempo estimado: " + d.estimatedTime() + " minutos" + "\n";
 		}
-		
-		if(d.getPathGraph().getEdges().size() > 0)
+
+		if (d.getPathGraph().getEdges().size() > 0)
 			geoJson.toGeoJson(d.getPathGraph());
-		
+
 		return s;
 	}
 
@@ -95,5 +95,24 @@ public class UnisinosMap {
 			}
 		}
 
+	}
+
+	/**
+	 * Mostra a menor distância entre todos os centros administrativos da
+	 * Unisinos
+	 */
+	public void distanciaCentros() {
+		for (Place place : map.getAdm()) {
+			for (Place place2 : map.getAdm()) {
+				if (place.getId() != place2.getId()) {
+					Dijsktra d = new Dijsktra(map, map.vertexValue(place.getId()), map.vertexValue(place2.getId()), "walk");
+					System.out.println("Menor rota entre " + place.getName() + " e " + place2.getName() + ":");
+					System.out.println(d.getFullPath());
+					System.out.println("Distância em metros:"+d.minDistance());
+					//geoJson.toGeoJson(d.getPathGraph());
+					System.out.println();
+				}
+			}
+		}
 	}
 }

@@ -9,6 +9,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//Nós (Gabriela de Campos Trevisan, Paula Adriana Knob, Tais Felipe Rabello), garantimos que:
+//
+//- Não utilizamos código fonte obtidos de outros estudantes,
+//ou fonte não autorizada, seja modificado ou cópia literal.
+//- Todo código usado em nosso trabalho é resultado do nosso
+//trabalho original, ou foi derivado de um
+//código publicado nos livros texto desta disciplina.
+//- Temos total ciência das consequências em caso de violarmos estes termos.
+
 public class geoJson {
 	private static BufferedReader buffer;
 
@@ -45,7 +54,10 @@ public class geoJson {
 			if (geometry.getString("type").equals("Point")) { // Place
 				JSONObject coordinates = new JSONObject(geometry.toString());
 				JSONArray coords = coordinates.getJSONArray("coordinates");
-				Place p = new Place(properties.getInt("id"), properties.getString("name"),properties.getString("tipo"), coords.getDouble(0), coords.getDouble(1));
+				Place p = new Place(properties.getInt("id"), properties.getString("name"), properties.getString("tipo"),
+						coords.getDouble(0), coords.getDouble(1));
+				if(p.getType().equals("adm"))
+					g.addAdm(p);					
 				g.insertVertex(p);
 			}
 
@@ -69,62 +81,63 @@ public class geoJson {
 
 	public static void toGeoJson(Graph g) {
 		String geoJson = "";
-		
-	    JSONObject featureCollection = new JSONObject();
-	    try {
-	        featureCollection.put("type", "FeatureCollection");
-	        JSONArray featureList = new JSONArray();
-	        for (Place place : g.getVertices()) {
-	            JSONObject feature = new JSONObject();
-	        	feature.put("type", "Feature");
-	        	
-	            JSONObject point = new JSONObject();
-	            point.put("type", "Point");
-	            JSONArray coord = new JSONArray("["+place.getLng()+","+place.getLat()+"]");
-	            point.put("coordinates", coord);
-	            feature.put("geometry", point);
-	            
-	            JSONObject properties = new JSONObject();	            
-	            properties.put("id", place.getId());
-	            properties.put("tipo", place.getType());   
-	            if(!place.getName().isEmpty()) 
-	            	properties.put("name", place.getName()); 
-	            feature.put("properties", properties);
-	            
-	            featureList.put(feature);
-	            featureCollection.put("features", featureList);
-	        }
-	        for (Road road : g.getEdges()) {
-	            JSONObject feature = new JSONObject();
-	        	feature.put("type", "Feature");
-	        	
-	            JSONObject linestring = new JSONObject();
-	            linestring.put("type", "LineString");
-	            JSONArray coord = new JSONArray("[["+road.getV1().getLng()+","+road.getV1().getLat()+"]"+",["+road.getV2().getLng()+","+road.getV2().getLat()+"]]");
-	            linestring.put("coordinates", coord);
-	            feature.put("geometry", linestring);
-	            
-	            JSONObject properties = new JSONObject();	            
-	            properties.put("v1", road.getV1().getId());
-	            properties.put("v2", road.getV2().getId()); 
-	            properties.put("deslocamento", road.getDisplacement()); 
-	            feature.put("properties", properties);
-	            
-	            featureList.put(feature);
-	            featureCollection.put("features", featureList);
-	        }
-	    } catch (JSONException e) {
-	        e.printStackTrace();
-	    }
-	    
-	    geoJson = featureCollection.toString();	
-		generateFile(geoJson);		
+
+		JSONObject featureCollection = new JSONObject();
+		try {
+			featureCollection.put("type", "FeatureCollection");
+			JSONArray featureList = new JSONArray();
+			for (Place place : g.getVertices()) {
+				JSONObject feature = new JSONObject();
+				feature.put("type", "Feature");
+
+				JSONObject point = new JSONObject();
+				point.put("type", "Point");
+				JSONArray coord = new JSONArray("[" + place.getLng() + "," + place.getLat() + "]");
+				point.put("coordinates", coord);
+				feature.put("geometry", point);
+
+				JSONObject properties = new JSONObject();
+				properties.put("id", place.getId());
+				properties.put("tipo", place.getType());
+				if (!place.getName().isEmpty())
+					properties.put("name", place.getName());
+				feature.put("properties", properties);
+
+				featureList.put(feature);
+				featureCollection.put("features", featureList);
+			}
+			for (Road road : g.getEdges()) {
+				JSONObject feature = new JSONObject();
+				feature.put("type", "Feature");
+
+				JSONObject linestring = new JSONObject();
+				linestring.put("type", "LineString");
+				JSONArray coord = new JSONArray("[[" + road.getV1().getLng() + "," + road.getV1().getLat() + "]" + ",["
+						+ road.getV2().getLng() + "," + road.getV2().getLat() + "]]");
+				linestring.put("coordinates", coord);
+				feature.put("geometry", linestring);
+
+				JSONObject properties = new JSONObject();
+				properties.put("v1", road.getV1().getId());
+				properties.put("v2", road.getV2().getId());
+				properties.put("deslocamento", road.getDisplacement());
+				feature.put("properties", properties);
+
+				featureList.put(feature);
+				featureCollection.put("features", featureList);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		geoJson = featureCollection.toString();
+		generateFile(geoJson);
 		openMap();
 	}
-	
+
 	private static File generateFile(String geoJson) {
 		File file = new File("data.js");
-		String data = "var data = " + geoJson + ";";		
+		String data = "var data = " + geoJson + ";";
 		try {
 			file.createNewFile();
 			FileWriter writer = new FileWriter(file);
@@ -136,7 +149,7 @@ public class geoJson {
 		}
 		return file;
 	}
-	
+
 	public static void openMap() {
 		File htmlFile = new File("map.html");
 		try {
