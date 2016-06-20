@@ -10,32 +10,35 @@ import java.util.Scanner;
 //  - Temos total ciência das consequências em caso de violarmos estes termos.
 
 public class Main {
-	public static void main(String[] args) {
-		Graph g = geoJson.toGraph("map.geojson");
+	private static Scanner read;
 
-		/*
-		 * for (Place place : g.getVertices()) { System.out.print(place.getId()+
-		 * ": "); for (Place adj : place.getAdjacents()) {
-		 * System.out.print(adj.getId()+" "); } System.out.println(); }
-		 */
+	public static void main(String[] args) {
+		UnisinosMap map = new UnisinosMap();
+		Graph g = map.getMap();
+		Graph mstPrim = map.getMstPrim();
+		Graph mstKruskal = map.getMstKruskal();
 
 		System.out.println("Grafo preenchido:");
 		System.out.println(g);
+		//geoJson.toGeoJson(g);
 
 		System.out.println("Prim:\n");
 		System.out.println("MST: \n");
-		System.out.println(Algorithms.Prim(g));
-		System.out.println("Quantidade mínima de tinta: " + Algorithms.Prim(g).minToPaint() + " litros\n");
+		System.out.println(mstPrim);
+		//geoJson.toGeoJson(mstPrim);
+		System.out.println("Quantidade mínima de tinta: " + map.minToPaint(mstPrim) + " litros\n");
 
 		System.out.println("Kruskal:\n");
 		System.out.println("MST: \n");
-		System.out.println(Algorithms.Kruskal(g));
-		System.out.println("Quantidade mínima de tinta: " + Algorithms.Kruskal(g).minToPaint() + " litros\n");
+		System.out.println(mstKruskal);
+		//geoJson.toGeoJson(mstKruskal);
+
+		System.out.println("Quantidade mínima de tinta: " + map.minToPaint(mstKruskal) + " litros\n");
 
 		int source;
 		int dest;
-		Scanner read = new Scanner(System.in);
-
+		read = new Scanner(System.in);
+		System.out.println("Caminho entre dois locais:");
 		do {
 			System.out.printf("Informe o ID do local de origem: ");
 			try {
@@ -53,18 +56,36 @@ public class Main {
 			}
 		} while (g.vertexValue(dest) == null);
 
-		Dijsktra d;
-		d = new Dijsktra(g, g.vertexValue(source), g.vertexValue(dest), "walk");
-		System.out.println("\nMenor percurso caminhando entre V" + source + " e V" + dest + ": " + d.getFullPath());
-		if (d.minDistance() != Double.POSITIVE_INFINITY) {
-			System.out.println("Distância em metros: " + d.minDistance());
-			System.out.println("Tempo estimado: " + d.estimatedTime() + " minutos");
-		}
-		d = new Dijsktra(g, g.vertexValue(source), g.vertexValue(dest), "car");
-		System.out.println("\nMenor percurso de carro entre V" + source + " e V" + dest + ": " + d.getFullPath());
-		if (d.minDistance() != Double.POSITIVE_INFINITY) {
-			System.out.println("Distância em metros " + d.minDistance());
-			System.out.println("Tempo estimado: " + d.estimatedTime());
-		}
+		System.out.println(map.minRoute(source, dest, "walk"));
+		System.out.println(map.minRoute(source, dest, "car"));
+		
+		
+		System.out.println("Locais próximos:");
+		
+		do {
+			System.out.printf("Informe o ID do local de origem: ");
+			try {
+				source = Integer.parseInt(read.next());
+			} catch (NumberFormatException e) {
+				source = -1;
+			}
+		} while (g.vertexValue(source) == null);
+		
+		String type;
+		System.out.printf("Informe o tipo de local (comida, sala_de_aula, auditorio, ginasio, adm): ");
+		type = read.next();	
+		
+		int dist;		
+		do {
+			System.out.printf("Informe a distância máxima em metros que você quer percorrer: ");
+			try {
+				dist = Integer.parseInt(read.next());
+			} catch (NumberFormatException e) {
+				dist = -1;
+			}
+		} while (dist == -1);
+		
+		map.nearPlaces(source, type, dist);		
+		
 	}
 }

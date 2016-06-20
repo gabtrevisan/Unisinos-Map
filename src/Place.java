@@ -14,23 +14,29 @@ public class Place {
 	private String name;
 	private String type;
 	private ArrayList<Place> adjacents;
+	private double lat;
+	private double lng;
 
 	/** Local na Unisinos
 	 * @param id Id numérico
 	 * @param type Tipo (sala_de_aula, adm, banheiro, comida, farmacia, etc)
 	 */
-	public Place(int id, String type) {
+	public Place(int id, String type, double lng, double lat) {
 		this.id = id;
 		this.name = "";
 		this.type = type;
 		this.adjacents = new ArrayList<>();
+		this.lat = lat;
+		this.lng = lng;
 	}
 	
-	public Place(int id, String name, String type) {
+	public Place(int id, String name, String type, double lng, double lat) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.adjacents = new ArrayList<>();
+		this.lat = lat;
+		this.lng = lng;
 	}
 	
 	public int getId() {
@@ -61,8 +67,31 @@ public class Place {
 		return this.adjacents;
 	}
 	
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+	
 	public void insertAdjacent(Place p) {
-		if(!this.getAdjacents().contains(p))
+		boolean contains = false;
+		for (int i = 0; i < getAdjacents().size(); i++) {
+			if(getAdjacents().get(i).getId() == p.getId()) {
+				contains = true;
+				break;
+			}
+		}
+		if(!contains)
 			this.adjacents.add(p);
 	}
 

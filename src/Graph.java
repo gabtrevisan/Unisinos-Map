@@ -71,7 +71,7 @@ public class Graph {
 	 * uma referência para esse vértice
 	 */
 	public Place insertVertex(Place o) {
-		Place v = new Place(o.getId(), o.getName(), o.getType());
+		Place v = new Place(o.getId(), o.getName(), o.getType(), o.getLng(), o.getLat());
 		vertices.add(v);
 		return v;
 	}
@@ -91,7 +91,7 @@ public class Graph {
 			v2 = o.getV2();
 		else
 			v2 = this.insertVertex(o.getV2());
-
+		
 		v1.insertAdjacent(v2);
 		v2.insertAdjacent(v1);
 
@@ -149,8 +149,12 @@ public class Graph {
 	}
 
 	/** Retorna o elemento armazenado na aresta e */
-	public Road edgeValue(Road e) {
-		return e;
+	public Road edgeValue(Place v1, Place v2) {
+		for (Road road : this.getVertexEdges(v1)) {
+			if(this.opposite(v1, road).getId() == v2.getId())
+				return road;
+		}
+		return null;
 	}
 
 	/** Retorna o elemento armazenado no vértice v */
@@ -196,7 +200,6 @@ public class Graph {
 	 * Verifica se o grafo possui o vértice
 	 * 
 	 * @param p
-	 *            Vértice
 	 * @return boolean
 	 */
 	public boolean hasVertex(Place p) {
