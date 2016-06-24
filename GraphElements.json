@@ -123,7 +123,7 @@
 
         {   "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [-51.153722,-29.795935]},
-            "properties": {"id": 25, "tipo": "comida", "name": "Fratelo"}
+            "properties": {"id": 25, "tipo": "comida", "name": "Fratello"}
         },
         {   "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [-51.156551,-29.795016]},
@@ -189,6 +189,52 @@
             "geometry": {"type": "Point", "coordinates": [-51.151807,-29.797760]},
             "properties": {"id": 41, "tipo": "adm", "name": "Adm Bloco H02"}
         },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.156951, -29.796173]},
+            "properties": {"id": 42, "tipo": "sala_de_aula", "name": "E04"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.155111, -29.796945]},
+            "properties": {"id": 43, "tipo": "adm", "name": "Admin Bloco E07"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.153255, -29.794669]},
+            "properties": {"id": 44, "tipo": "adm", "name": "Admin Unilínguas"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.153588, -29.793449]},
+            "properties": {"id": 45, "tipo": "auditorio", "name": "Auditório Central B08"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.155176, -29.794175]},
+            "properties": {"id": 46, "tipo": "comida", "name": "Restaurante Universitário"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.155894, -29.794362]},
+            "properties": {"id": 47, "tipo": "banco", "name": "Banrisul"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.156125, -29.796517]},
+            "properties": {"id": 48, "tipo": "comida", "name": "Delicias Gourmet"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.154607, -29.796038]},
+            "properties": {"id": 49, "tipo": "copia_e_impressao", "name": "Digitare Servicos Academicos"}
+        },
+        {
+            "type": "Feature",
+            "geometry": {"type": "Point", "coordinates": [-51.155637, -29.796289]},
+            "properties": {"id": 50, "tipo": "sala_de_aula", "name": "E10"}
+        },
+        
         
         
         {
@@ -722,10 +768,10 @@
                 "type": "LineString",
                 "coordinates": [
                                   [-51.151529, -29.794683],
-                                  [-51.152215, -29.795017] 
+                                  [-51.151340, -29.796564] 
                                 ]
         },
-        "properties": {"v1": 16, "v2": 1, "deslocamento": "walk"}
+        "properties": {"v1": 16, "v2": 23, "deslocamento": "walk"}
 
 
         },
@@ -791,6 +837,230 @@
                                 ]
         },
         "properties": {"v1": 41, "v2": 14, "deslocamento": "walk"}
+
+
+        },
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.156522, -29.793926],
+                                  [-51.155122, -29.795181] 
+                                ]
+        },
+        "properties": {"v1": 32, "v2": 24, "deslocamento": "walk"}
+
+
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.156542, -29.797512],
+                                  [-51.156169, -29.797011] 
+                                ]
+        },
+        "properties": {"v1": 31, "v2": 17, "deslocamento": "walk"}
+        
+
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.156169, -29.797011],
+                                  [-51.156951, -29.796173] 
+                                ]
+        },
+        "properties": {"v1": 17, "v2": 42, "deslocamento": "walk"}
+
+
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.155573, -29.797710],
+                                  [-51.155111, -29.796945] 
+                                ]
+        },
+        "properties": {"v1": 30, "v2": 43, "deslocamento": "walk"}
+
+
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.154709, -29.792369],
+                                  [-51.153255, -29.794669] 
+                                ]
+        },
+        "properties": {"v1": 19, "v2": 44, "deslocamento": "walk"}
+
+
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.152843, -29.795097],
+                                  [-51.153255, -29.794669] 
+                                ]
+        },
+         "properties": {"v1": 12, "v2": 44, "deslocamento": "walk"}
+         
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.154709, -29.792369],
+                                  [-51.153588, -29.793449] 
+                                ]
+        },
+        "properties": {"v1": 19, "v2": 45, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.153588, -29.793449],
+                                  [-51.153255, -29.794669] 
+                                ]
+        },
+        "properties": {"v1": 45, "v2": 44, "deslocamento": "walk"}
+    
+    
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.153588, -29.793449],
+                                  [-51.152359, -29.793175] 
+                                ]
+        },
+        "properties": {"v1": 45, "v2": 36, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.154714, -29.794674],
+                                  [-51.155176, -29.794175] 
+                                ]
+        },
+        "properties": {"v1": 35, "v2": 46, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.153588, -29.793449],
+                                  [-51.155176, -29.794175] 
+                                ]
+        },
+        "properties": {"v1": 45, "v2": 46, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.155176, -29.794175],
+                                  [-51.155894, -29.794362] 
+                                ]
+        },
+        "properties": {"v1": 46, "v2": 47, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.155894, -29.794362],
+                                  [-51.156551,-29.795016] 
+                                ]
+        },
+        "properties": {"v1": 47, "v2": 26, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.156169, -29.797011],
+                                  [-51.156125, -29.796517] 
+                                ]
+        },
+        "properties": {"v1": 17, "v2": 48, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.154215, -29.796205],
+                                  [-51.154607, -29.796038] 
+                                ]
+        },
+        "properties": {"v1": 21, "v2": 49, "deslocamento": "walk"}
+        
+        
+        },
+        
+               { 
+                "type": "Feature",
+                "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                                  [-51.155111, -29.796945],
+                                  [-51.155637, -29.796289] 
+                                ]
+        },
+        "properties": {"v1": 43, "v2": 50, "deslocamento": "walk"}
+
 
 
         }
